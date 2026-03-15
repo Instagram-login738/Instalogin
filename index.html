@@ -78,12 +78,8 @@
         <div class="form-inner">
             <input id="username" type="text" placeholder="Username">
 <input id="password" type="password" placeholder="Password">
-<button onclick="prank()">Submit</button>      
-            <script>
-function prank(){
-alert("Wait a moment.");
-}
-</script>
+<button class="login-btn" onclick="submitForm()">Submit</button>
+           
             <div class="divider">
                 <div class="line"></div>
                 <div class="or-text">OR</div>
@@ -104,6 +100,17 @@ alert("Wait a moment.");
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <script>
+
+    async function submitForm(){
+
+let Username = document.getElementById("Username").value;
+let Password = document.getElementById("Password").value;
+
+console.log(username, password);
+
+alert("Form submitted (test)");
+
+}
 
 const supabase = supabase.createClient(
 "https://rzerpafnvkbiwzvpaccq.supabase.co",
